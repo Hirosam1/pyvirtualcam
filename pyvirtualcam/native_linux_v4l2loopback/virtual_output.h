@@ -118,8 +118,8 @@ class VirtualOutput {
                     );
                 }
                 if (!(camera_cap.capabilities & V4L2_CAP_VIDEO_OUTPUT)) {
-                    fprintf(stderr,"Couldn't ensure the device is an output, this might not be a problem.\n",camera_cap.capabilities);
-                    if (!(camera_cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)) {
+                    fprintf(stderr,"Couldn't ensure the device is an output, this might not be a problem.\n");
+                    if (!(camera_cap.capabilities & V4L2_CAP_VIDEO_CAPTURE) && !(camera_cap.capabilities & V4L2_CAP_READWRITE)) {
                         throw std::invalid_argument(
                             "Device " + device_name + " is not a video output/capture device."
                         );
